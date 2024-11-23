@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+	<body>
+		<%- include('shared/navbar'); %>
+		<main class="container">
+			<div class="mainheading text-center mb-3">
+				<h1 class="sitetitle mb-3">Augmentation complete!</h1>
+				<h5 class="lead">Your dataset is now <%= number %> times bigger!</h5>
+			</div>
+			<div class="divider"></div>
+			
+			<section class="d-flex justify-content-center align-items-start" style="height: 60vh;">
+				<div class="settings-notice text-center mt-5">
+					<i class="fa-solid fa-download mb-3" style="font-size: 100px; color: #4CAF50"></i> 
+					<br>
+					<a href="<%= download.substring(8) %>" download style="font-size: 24px; color: #333;">Download your file</a>
+				</div>
+			</section>
+		</main>
+		
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+	</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+	<body>
+		<%- include('shared/navbar'); %>
+		<section class="container main-heading-container">
+			<div class="mainheading mb-2">
+				<h1 class="sitetitle homeh1 ">Hug Data</h1>
+			</div>
+			<h5 class="lead">Augment your Image Dataset or Learn about Computer Vision</h5>
+			<div class="divider"></div>
+
+		</section>
+
+		<main style="background-color:rgb(236, 243, 219);">
+			<section class="container features-section">
+				<div class="feature">
+					<a href="/write_post">
+						<i class="icon fa fa-pencil"></i>
+						<h3>Write and read Articles</h3>
+						<p>Discover news on computer vision, data augmentation and so much more</p>
+					</a>
+				</div>
+				<hr class="feature-separator">
+				<div class="feature">
+					<a href="/search/datasets">
+						<i class="icon fa fa-database"></i>
+						<h3>Datasets</h3>
+						<p>Explore and find datasets of images for your machine learning and computer vision project</p>
+					</a>
+				</div>
+				<hr class="feature-separator">
+				<div class="feature">
+					<a href="/aug">
+						<i class="icon fa fa-magic"></i>
+						<h3>Data Augmentation</h3>
+						<p>Apply data augmentation techniques for your datasets and get better results</p>
+					</a>
+				</div>
+			</section>
+		</main>
+		
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+
+	</body>
+</html>

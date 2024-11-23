@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+
+    <body>
+        <section class="container login-container d-flex justify-content-center align-items-center">
+            <div class="login-card">
+                <div class="mainheading">
+                    <h1 class="sitetitle">Logout from Hug Data</h1>
+                    <h5 class="lead">Are you sure?</h5>
+                </div>
+            
+                <div class="card-body">
+                    <form action="/logout" method="post" class="d-flex  align-items-center justify-content-center button-group">
+                        <button type="button" class="btn" onclick="window.location.href='/'">Cancel</button>
+                        <button type="submit" class="operation-btn">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        
+		<%- include('shared/script'); %>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+	<html lang="en">
+		<%- include('shared/head'); %>
+	<body>
+
+		<%- include('shared/navbar'); %>
+
+		<article class="container">
+			<div class="row">
+
+				<div class="col-md-2 col-xs-12">
+					<div class="share">
+					
+						<ul>
+							<div class="heart-container">
+
+								<form action="/article/love/<%= article.id %>" method="post">
+									<button type="submit" class="btn position-relative ms-auto <%= loved %>">
+										Love|<%= nLove %>
+									</button>
+								</form>
+								
+							</div>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-8 col-md-offset-2 col-xs-12">
+					<div class="mainheading">
+
+						<div class="row post-top-meta">
+							<div class="col-md-2">
+								<a href="profile/<%= writerInfo.writerName %>"><img class="author-thumb" src="<%= writerInfo.writerImg.substring(6) %>" alt=""></a>
+							</div>
+							<div class="col-md-10">
+								<span class="author-description"><strong><%= writerInfo.writerName %></strong></span>
+								<div>
+								<span class="author-description"><%= writerInfo.writerDescr %></span>
+								</div>
+							</div>
+						</div>
+
+						<h1 class="posttitle"><%= article.title %></h1>
+
+					</div>
+
+					<img class="featured-image img-fluid" src="<%= article.pathImg.substring(6) %>" alt="">
+
+					<div class="article-post" style="white-space: normal; word-wrap: break-word;">
+						<%= article.corpus %>
+					</div>
+
+					<div class="after-post-tags">
+						<ul class="tags">
+							<% categories.forEach(category => { %>
+								<li><a href="#"><%= category.CATEGORYName %></a></li>
+							<% }) %>
+					</div>
+		
+					<div class="col-md-12 col-xs-12">
+
+						<div class="comment-box">
+							<h5>Leave a Comment</h5>
+							<form action="/article/comment/<%= article.id %>" method="post">
+								<textarea name="comment" placeholder="Add a comment..."></textarea>
+								<button type="submit" class="operation-btn">Post</button>
+							</form>
+						</div>
+		
+						<div class="comments-list">
+							<h5>Comments</h5>
+							<% if (comments.length!==0) { %>
+								<% let i = 0 %>
+								<% if (comments.length <= 3) { %>
+									<% comments.forEach(comment => { %>
+										<div class="comment-item">
+											<div class="comment-author"><%= comment.user %></div>
+											<p><%= comment.corpus %></p>
+										</div>
+									<% }) %>
+								<% } else { %>
+								 
+									<% for(i = 0; i < 3; i++ ) { %>
+										<div class="comment-item">
+											<div class="comment-author"><%= comments[i].user %></div>
+											<p><%= comments[i].corpus %></p>
+										</div>
+									<% } %>
+									<input type="checkbox" id="show-more" class="show-more-checkbox">
+									<div class="more-comments">
+	
+									<% for(i = i; i < comments.length; i++ ) { %>
+										<div class="comment-item">
+											<div class="comment-author"><%= comments[i].user %></div>
+											<p><%= comments[i].corpus %></p>
+										</div>
+									<% } %>
+									</div>
+									<label for="show-more" class="view-more-btn operation-btn" id="view-more-btn" onclick="toggleLabel()">View More Comments</label>
+								<% } %>
+							<% } else { %>
+								<h7>No comments yet :(</h7>
+							<%}  %>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+		<script src="/javascripts/more_comments.js"></script>
+	</body>
+</html>

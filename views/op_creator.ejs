@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+<body>
+	<%- include('shared/navbar'); %>
+	<main class="container">
+		<div class="mainheading">
+			<h1 class="sitetitle">Share your knowledge</h1>
+		</div>
+		<hr>
+		<div class="op-row">
+			<div class="op-box">
+				<i class="icon fa fa-pencil-alt"></i>
+				<h2>Write an article</h2>
+				<p>Share your knowledge about Computer Vision</p>
+				<a href="write_post" class="button operation-btn">Start writing</a>
+			</div>
+			
+			<div class="op-box">
+				<i class="icon fa fa-database"></i>
+				<h2>Publish a Dataset</h2>
+				<p>Upload and share your dataset of images with other people</p>
+				<a href="publish_dataset" class="button operation-btn">Publish</a>
+			</div>
+		</div>
+	</main>
+	
+	<%- include('shared/footer'); %>
+	<%- include('shared/script'); %>
+
+</body>
+</html>

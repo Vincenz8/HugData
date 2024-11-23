@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css">
+<body>
+	<%- include('shared/navbar'); %>
+	<main class="container">
+		<div class="mainheading">
+			<h1 class="sitetitle">Write your article</h1>
+		</div>
+		<form id="articleForm" action="/write_post" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="text" class="form-control mb-3" id="title" name="title" placeholder="Insert title" required maxlength="20">
+				<label for="pathImg">Cover Image</label>
+				<input type="file" class="form-control mb-3" id="pathImg" name="pathImg" accept=".jpeg,.png" required>
+				<label for="corpus" >Content</label>
+				<textarea class="form-control mb-3" id="corpus" minlength="100" maxlength="2000" name="corpus" rows="10" placeholder="Write here" required></textarea>
+				<label for="categories">Categories</label>
+				<input type="text" class="form-control mb-3" id="categories" name="categories" placeholder="Add categories" required>
+			</div>
+			<div class="d-flex justify-content-center">
+				<button type="submit" class="operation-btn">Publish</button>
+			</div>
+		</form>
+	</main>
+
+	<%- include('shared/footer'); %>
+	<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+	<script>
+		var input = document.querySelector('input[name=categories]');
+		new Tagify(input);
+
+		document.querySelector("#categories").addEventListener("keydown", function(e) {
+			if (e.key === "Enter") {
+				e.preventDefault();  
+			}
+		});
+	</script>
+	<%- include('shared/script'); %>
+
+
+</body>
+</html>

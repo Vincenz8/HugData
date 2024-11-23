@@ -1,0 +1,24 @@
+<% let k = 0; %>
+<% while (k < found.length) { %>
+    <div class="row justify-content-center mb-4">
+        <% for (let i = 0; i < 3 && k < found.length; i++) { %>
+            <div class="col-md-4 d-flex justify-content-center mb-3">
+                <section class="card" style="width: 20rem;">
+                    <a href="/creator/<%= found[k].name %>/articles">
+                        <img class="img-fluid" src="<%= found[k].pathImg.substring(6) %>" alt="Profile picture of <%= found[k].name %>" style="width: 100%; height: 200px; object-fit: cover;">
+                    </a>
+                    <div class="card-body text-center p-3" onclick="location.href='/creator/<%= found[k].name %>/articles'">
+                        <h2 class="card-title">
+                            <a href="/creator/<%= found[k].name %>/articles"><%= found[k].name %></a>
+                        </h2>
+                        <hr>
+                        <h4 class="card-text"><%= found[k].description.substring(0, 60) %></h4>
+                        
+                    </div>
+                </section>
+                <% k++; %>
+            </div>
+        <% } %>
+    </div>
+<% } %>
+

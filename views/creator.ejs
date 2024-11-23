@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+
+	<body>
+
+		<%- include('shared/navbar'); %>
+
+		<section class="mainheading graybg" >
+			<h1 class="sitetitle mb-4" id="creatorName"><%= creator.name %></h1>
+			<div class="text-center">
+				<img id="currentProfilePhoto" src="<%= creator.pathImg.substring(6) %>" alt="Current Profile Photo" class="profile-photo me-3" style="border-radius: 100px;" />
+			</div>
+			<h4 class="text-center mt-3">"<%= creator.description %>"</h4>
+		</section>
+		
+		<main>
+			<div class="container">
+				<div class="section-title d-flex justify-content-between container">
+						<h2 id="articles" class="section-title-item <%= type === 'articles' ? 'active': '' %> section-center">Articles</h2>
+						<h2 id="datasets" class="section-title-item <%= type === 'datasets' ? 'active': '' %> section-center">Datasets</h2>
+				</div>
+
+				<% if (found.length !== 0) { %>
+					<div class="listrecent">
+
+						<% if (type === 'articles') { %>
+		
+							<%- include('creator_content/articles'); %>
+		
+						<% } else if (type === 'datasets') { %>
+		
+							<%- include('creator_content/datasets'); %>
+		
+						<% } %>
+					</div>
+				<% } else { %>
+				
+					<h2 class="text-center">No <%= type %> published yet! :/</h2>
+	
+				<% } %>
+			</div>
+
+		</main>
+
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+		<script src="/javascripts/creator_content.js"></script>
+		<script src="/javascripts/delete_content.js"></script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+
+    <body>
+        <section class="container login-container d-flex justify-content-center align-items-center">
+            <div class="login-card">
+                <div class="mainheading">
+                    <h1 class="sitetitle">Login to Hug Data</h1>
+                    <h5 class="lead">Access your account</h5>
+                </div>
+            
+                <div class="card-body">
+                    <form action="/login" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control mb-3" id="name" name="name" placeholder="Username">
+                                <input type="password" class="form-control mb-3" id="password" name="password" placeholder="Password">
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="operation-btn btn-primary">Login</button>  
+                            </div>
+                        </div>          
+                        <div class="divider"></div>
+                        <a class="btn btn-link d-block text-center"><%= message %></a>
+                        <a href="register" class="btn btn-link d-block text-center">New? Register Here!</a>            
+                    </form>
+                </div>
+            </div>
+        </section>
+		<%- include('shared/script'); %>
+    </body>
+</html>

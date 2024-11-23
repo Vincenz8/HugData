@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+
+	<body>
+		<%- include('shared/navbar'); %>
+
+		<div id="loadingOverlay" style="display: none;">
+			<div class="loading-text">Processing, please wait...</div>
+		</div>
+
+		<main class="container">
+			<div class="mainheading">
+			<h1 class="sitetitle">Augment your dataset</h1>
+			</div>
+
+			<form id="datasetForm" action="/aug/data_augment/" method="post" enctype="multipart/form-data">
+			<div class="row d-flex align-items-start">
+				<div class="col-12">
+				<div class="form-group">
+					<%- include('shared/drag_n_drop') %>
+				</div>
+				</div>
+			</div>
+			<hr>
+
+			<div class="container">
+				<div class="row justify-content-center align-items-center" style="height: 100%;">
+					<div class="col-md-4">
+						<small class="text-center text-align">Operations with default values will not be executed</small>
+
+						<div class="input-group mt-2">
+						<label for="flip-options" class="input-label">Flip:</label>
+						<select id="flip-options" name="flip" class="styled-input mb-2">
+							<option value="">None</option>
+							<option value=1>Horizontal</option>
+							<option value=0>Vertical</option>
+						</select>
+						</div>
+
+						<div class="input-group mb-2">
+						<label for="rotate-value" class="input-label">Rotation:</label>
+						<input type="number" id="rotate-value" name="rotate" class="styled-input" placeholder="degrees" min="0" max="360">
+						</div>
+						<% if (loggedIn) { %>
+							<div class="input-group mb-2">
+								<label for="blur-value" class="input-label">Blur:</label>
+								<input type="number" id="blur-value" name="blur" class="styled-input" placeholder="intensity" min="0">
+								</div>
+		
+								<div class="input-group mb-2">
+								<label for="bright-value" class="input-label">Brightness:</label>
+								<input type="number" id="bright-value" name="bright" class="styled-input" placeholder="intensity" min="0" step="0.1">
+								</div>
+		
+								<div class="input-group mb-2">
+								<label for="contrast-value" class="input-label">Contrast:</label>
+								<input type="number" id="contrast-value" name="contrast" class="styled-input" placeholder="intensity" min="-1" max="1" step="0.1">
+								</div>
+						<% } else { %>
+							<a href="login" class="btn btn-link d-block text-center">Login for more operations</a>            
+						<% } %>
+
+					</div>
+				</div>
+
+				<div class="text-center mt-3">
+				<hr>
+				<button type="submit" class="operation-btn btn-modern">Upload</button>
+				</div>
+			</form>
+		</main>
+
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+
+		<script src="javascripts/drag_n_drop_area.js"></script>
+		<script src="javascripts/loading_page.js"></script>
+	</body>
+</html>

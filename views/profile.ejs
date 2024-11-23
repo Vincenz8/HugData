@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include('shared/head'); %>
+	<body>
+		<%- include('shared/navbar'); %>
+
+		<main class="container">
+            <div class="mainheading">
+				<h1 class="sitetitle">Your profile</h1>
+			</div>
+            <hr>
+             <div class="container center">
+                <form action="/profile/update_profile_photo" method="post" enctype="multipart/form-data">
+                    <section id="cover-photo">
+                        <h2>Profile photo</h2>
+                        <div class="profile-photo-container d-flex align-items-center">
+                            <img id="currentProfilePhoto" src="<%= user.pathImg.substring(6) %>" alt="Current Profile Photo" class="profile-photo me-3" style="border-radius: 100px;" />
+                            <input type="file" id="profilePhoto" class="custom-margin form-control mb-2 mt-3" name="profilePhoto" accept=".jpeg, .png" required>
+                        </div>
+                    </section>
+                    <button type="submit" class="operation-btn">Update profile photo</button>
+                </form>
+                    <div class="divider"></div>
+
+                <form action="/profile/update_description" method="post" enctype="application/x-www-form-urlencoded">
+                    <section id="descr">
+                        <h2>Description</h2>
+                        <textarea id="description" name="description" class="form-control mb-3" rows="4" placeholder="<%= user.description %>" required maxlength="60"></textarea>
+                        <button type="submit" class="operation-btn">Update description</button>
+                    </section>
+                </form>
+
+                <div class="divider"></div>
+
+                <section id="aug_history">
+                    <h2>Augmentation History</h2>
+                    <% if (augHistory.length !== 0) { %>
+                        <ul>
+                            <% augHistory.forEach(aug => { %>
+                                <li><%= aug.dataName %> | <%= aug.time %></li>
+                            <% }) %>
+                        </ul>
+                    <% } else { %>
+                        <p>No data augmentation operations were requested.</p>
+                    <% } %>
+                </section>
+                
+                <div class="divider"></div>
+
+                <section id="be_creator">
+                    <h2>Become a creator</h2>
+                    <% if (user.creator) { %>
+                        <p>You are already a creator.</p>
+                    <% } else { %>
+                        <form action="/profile/become_creator" method="post" enctype="multipart/form-data">
+                            <button type="submit" class="operation-btn">Click Here</button>
+                        </form>
+                    <% } %>
+                </section>
+
+            </div>
+		</main>
+
+		<%- include('shared/footer'); %>
+		<%- include('shared/script'); %>
+	</body>
+</html>
+
+
+<style>
+    .custom-margin {
+        margin-left: 20px; /* Puoi regolare il valore come desideri */
+    }
+</style>
